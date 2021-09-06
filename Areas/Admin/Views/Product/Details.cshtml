@@ -1,0 +1,102 @@
+﻿
+@model OnlineShop.Models.Products
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+
+<h2 class="text-info">Product Details </h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Id" type="hidden" readonly="readonly" />
+                    <input asp-for="Name" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Price" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" Price" class="text-danger"></span>
+            </div>
+            @*<div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Image"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Image" class="form-control" type="file" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" Image" class="text-danger"></span>
+            </div>*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductColor"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProductColor" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" ProductColor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductTypeID"></label>
+                </div>
+                <div class="col-8">
+                    @*<select asp-for="ProductTypeID" asp-items="ViewBag.ProductTypeID" class="form-control"></select>*@
+                    <input asp-for="ProductTypeID" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" ProductTypeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="SpecialTagId"></label>
+                </div>
+                <div class="col-8">
+                    @*<select asp-for="SpecialTagId" asp-items="ViewBag.TagId" class="form-control"></select>*@
+                    <input asp-for="SpecialTagId" class="form-control" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" SpecialTagId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IsAvailable"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="IsAvailable" class="" type="checkbox" readonly="readonly" />
+                </div>
+                <span asp-validation-for=" IsAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a type="button" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Index" class="btn btn-success">Back to List</a>
+
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <img src="~/@Model.Image" width="100%" />
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}
+
+

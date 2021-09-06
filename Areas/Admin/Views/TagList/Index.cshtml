@@ -1,0 +1,42 @@
+﻿@using OnlineShop.Models
+@model IEnumerable<TagLists>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Tag List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i> &nbsp; New Tag List</a>
+    </div>
+</div>
+<br />
+
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(c => c.TagList)
+            </th>
+            <th></th>
+            <th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TagList</td>
+                <td>
+                    <partial name="_ButtonTagList" model="item.Id" />
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
